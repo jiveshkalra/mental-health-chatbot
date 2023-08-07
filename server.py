@@ -8,7 +8,8 @@ load_dotenv()
 # AI API Setup
 hugging_face_token = os.getenv("HUGGING_FACE_TOKEN")
 # Model Url -> https://huggingface.co/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5
-API_URL = "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"
+model = "meta-llama/Llama-2-7b-chat-hf"
+# API_URL = "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"
 headers = {"Authorization": f"Bearer {hugging_face_token}"}
 conversations = []
 
