@@ -8,8 +8,7 @@ load_dotenv()
 # AI API Setup
 hugging_face_token = os.getenv("HUGGING_FACE_TOKEN")
 # Model Url -> https://huggingface.co/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5
-model = "meta-llama/Llama-2-7b-chat-hf"
-# API_URL = "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5"
+API_URL = "https://api-inference.huggingface.co/models/OpenAssistant/oasst-sft-1-pythia-12b"
 headers = {"Authorization": f"Bearer {hugging_face_token}"}
 conversations = []
 
@@ -47,7 +46,7 @@ def query(payload):
 
 def get_chatbot_response(prompt):
     # Get chatbot response from API
-    output = query({"inputs": f"<|prompter|>{prompt}<|endoftext|><|assistant|>"})
+    output = query({"inputs": f"<|prompter|>{prompt}<|endoftext|><|assistant|>", "options": {"max_length": 400}})
     print(output[0]['generated_text'])
     return output[0]['generated_text'].split('<|assistant|>')[-1]
 
